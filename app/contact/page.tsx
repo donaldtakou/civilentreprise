@@ -16,8 +16,35 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Ici vous pouvez ajouter la logique d'envoi du formulaire
-    console.log('Form submitted:', formData);
+    
+    // Construire le corps de l'email avec toutes les informations
+    const emailBody = `
+Nouvelle demande de devis - CivilEntreprise
+
+INFORMATIONS CLIENT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Nom: ${formData.name}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+
+TYPE DE PROJET:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${formData.subject}
+
+MESSAGE/DÉTAILS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${formData.message}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Date de la demande: ${new Date().toLocaleString('fr-FR')}
+    `.trim();
+
+    // Créer le lien mailto avec toutes les informations
+    const mailtoLink = `mailto:contact@civilentreprise.com?subject=${encodeURIComponent(`Demande de devis - ${formData.name}`)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Ouvrir le client email
+    window.location.href = mailtoLink;
+    
     setIsSubmitted(true);
     setTimeout(() => setIsSubmitted(false), 3000);
   };
@@ -230,7 +257,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-bold text-gray-900 mb-2 text-xl group-hover:text-orange-600 transition-colors">Email</h3>
                       <p className="text-gray-600">
-                        <a href="mailto:contact@contactcivilentreprise.com" className="hover:text-orange-600 font-semibold text-lg transition-colors break-all">
+                        <a href="mailto:contact@civilentreprise.com" className="hover:text-orange-600 font-semibold text-lg transition-colors break-all">
                           contact@civilentreprise.com
                         </a>
                       </p>

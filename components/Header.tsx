@@ -27,7 +27,7 @@ export default function Header() {
               <Phone size={16} className="animate-pulse" />
               <span className="font-medium">+237 695 927 172</span>
             </a>
-            <a href="mailto:contact@contactcivilentreprise.com" className="flex items-center gap-2 hover:text-green-200 transition-all duration-300 hover:scale-105">
+            <a href="mailto:contact@civilentreprise.com" className="flex items-center gap-2 hover:text-green-200 transition-all duration-300 hover:scale-105">
               <Mail size={16} />
               <span className="font-medium">contact@civilentreprise.com</span>
             </a>
