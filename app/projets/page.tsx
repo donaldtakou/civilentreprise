@@ -5,145 +5,203 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 export default function ProjetsPage() {
-  const [selectedMedia, setSelectedMedia] = useState<{type: 'image' | 'video', src: string} | null>(null);
+  const [selectedMedia, setSelectedMedia] = useState<typeof projects[0] | null>(null);
   const [filter, setFilter] = useState('all');
 
   const projects = [
-    {
-      title: 'Projet de Construction Moderne',
-      category: 'Construction Neuve',
-      location: 'Yaoundé',
-      image: '/realisations/photo_1_2025-12-10_00-28-04.jpg',
-      type: 'image' as const,
-    },
-    {
-      title: 'Rénovation d\'Infrastructure',
-      category: 'Rénovation',
-      location: 'Douala',
-      image: '/realisations/photo_2_2025-12-10_00-28-04.jpg',
-      type: 'image' as const,
-    },
+        // --- Nouveaux projets détaillés ---
+        {
+          title: 'Duplex au Profil de Mr Y (Babadjou, Cameroun)',
+          category: 'Construction Résidentielle',
+          location: 'Babadjou, Cameroun',
+          images: [
+            '/realisations/images/photo_2025-12-20_10-57-42.jpg',
+            '/realisations/images/photo_2025-12-20_10-58-10.jpg',
+            '/realisations/images/photo_2025-12-20_10-58-25.jpg',
+            '/realisations/images/photo_2025-12-20_10-58-43.jpg',
+            '/realisations/images/photo_2025-12-20_10-58-47.jpg',
+            '/realisations/images/photo_2025-12-20_10-58-53.jpg',
+          ],
+          type: 'image' as const,
+          description: `Duplex haut standing conçu pour répondre aux besoins d'une famille moderne.\n
+    Rez-de-chaussée : 3 balcons, salon principal, salon VIP, escalier design, salle à manger, cuisine équipée, magasin, 2 douches, 1 chambre.\n
+    Étage : 4 balcons, salon VIP, vide sur salon, chambre principale avec dressing, 2 chambres supplémentaires, 3 douches.\n
+    Surface habitable : 286 m² | Surface bâtie au sol : 134 m² | Terrain : 200 m².\n
+    Coût estimatif du gros œuvre : 44 620 € (29 millions FCFA).\n
+    Un projet optimisé pour le confort, la fonctionnalité et l’élégance architecturale.`,
+          highlights: [
+            'Architecture contemporaine',
+            'Optimisation des espaces',
+            'Finitions haut de gamme',
+            'Gestion de projet professionnelle',
+          ],
+        },
+  //
+  //
+        {
+          title: 'Mission d’expertise chantier SS-R+6',
+          category: 'Expertise & Contrôle',
+          location: 'Yaoundé',
+          images: [
+            '/realisations/images/photo_2025-12-20_11-00-31.jpg',
+            '/realisations/images/photo_2025-12-20_11-01-02.jpg',
+            '/realisations/images/photo_2025-12-20_11-01-18.jpg',
+            '/realisations/images/photo_2025-12-20_11-01-25.jpg',
+            '/realisations/images/photo_2025-12-20_11-01-31.jpg',
+          ],
+          type: 'image' as const,
+          description: "Services d’expertise technique sur un chantier SS-R+6 à usage d’habitation à Yaoundé. Analyse structurelle, contrôle qualité des matériaux, suivi de conformité et recommandations pour la sécurité et la durabilité. Intervention d’une équipe pluridisciplinaire pour garantir la réussite du projet.",
+          highlights: [
+            'Contrôle qualité',
+            'Sécurité chantier',
+            'Expertise technique',
+            'Accompagnement sur-mesure',
+          ],
+        },
+        {
+          title: "Rénovation d'Infrastructure",
+          category: 'Rénovation',
+          location: 'Douala',
+          image: '/realisations/images/photo_2_2025-12-10_00-28-04.jpg',
+        //
+        },
     {
       title: 'Chantier en Cours - Phase 1',
       category: 'Gros Œuvre',
       location: 'Yaoundé',
-      video: '/realisations/IMG_7661.MP4',
-      image: '/realisations/photo_3_2025-12-10_00-28-04.jpg',
+      video: '/realisations/videos/IMG_7661.MP4',
+      image: '/realisations/images/photo_3_2025-12-10_00-28-04.jpg',
       type: 'video' as const,
+      description: "Vidéo et image d'un chantier en phase initiale à Yaoundé, montrant les fondations et les premiers élévations du bâtiment.",
     },
     {
       title: 'Travaux de Terrassement',
       category: 'Terrassement',
       location: 'Garoua',
-      image: '/realisations/photo_4_2025-12-10_00-28-04.jpg',
+      image: '/realisations/images/photo_4_2025-12-10_00-28-04.jpg',
       type: 'image' as const,
+      description: "Travaux de terrassement à Garoua, avec engins de chantier et préparation du terrain pour la construction.",
     },
     {
       title: 'Construction Villa Moderne',
       category: 'Construction Neuve',
       location: 'Bastos, Yaoundé',
-      image: '/realisations/photo_5_2025-12-10_00-28-04.jpg',
+      image: '/realisations/images/photo_5_2025-12-10_00-28-04.jpg',
       type: 'image' as const,
+      description: "Image d'une villa moderne en construction à Bastos, Yaoundé, mettant en valeur l'architecture contemporaine du projet.",
     },
     {
       title: 'Réalisation Gros Œuvre',
       category: 'Gros Œuvre',
       location: 'Limbé',
-      video: '/realisations/IMG_7662.MP4',
-      image: '/realisations/photo_6_2025-12-10_00-28-04.jpg',
+      video: '/realisations/videos/IMG_7662.MP4',
+      image: '/realisations/images/photo_6_2025-12-10_00-28-04.jpg',
       type: 'video' as const,
+      description: "Vidéo et photo illustrant le gros œuvre réalisé à Limbé, avec une structure en béton et des ouvriers à l'œuvre.",
     },
     {
       title: 'Projet Infrastructure',
       category: 'Travaux Publics',
       location: 'Douala',
-      image: '/realisations/photo_7_2025-12-10_00-28-04.jpg',
+      image: '/realisations/images/photo_7_2025-12-10_00-28-04.jpg',
       type: 'image' as const,
+      description: "Projet d'infrastructure à Douala, montrant des travaux publics d'envergure et des équipements spécialisés.",
     },
     {
       title: 'Chantier Avancé',
       category: 'Construction Neuve',
       location: 'Yaoundé',
-      video: '/realisations/IMG_7663.MP4',
-      image: '/realisations/photo_8_2025-12-10_00-28-04.jpg',
+      video: '/realisations/videos/IMG_7663.MP4',
+      image: '/realisations/images/photo_8_2025-12-10_00-28-04.jpg',
       type: 'video' as const,
+      description: "Vidéo et image d'un chantier avancé à Yaoundé, illustrant la progression rapide des travaux de construction.",
     },
     {
       title: 'Maçonnerie Spécialisée',
       category: 'Maçonnerie',
       location: 'Bafoussam',
-      image: '/realisations/photo_9_2025-12-10_00-28-04.jpg',
+      image: '/realisations/images/photo_9_2025-12-10_00-28-04.jpg',
       type: 'image' as const,
+      description: "Travaux de maçonnerie spécialisée à Bafoussam, mettant en avant la qualité des finitions et des matériaux utilisés.",
     },
     {
       title: 'Rénovation Complète',
       category: 'Rénovation',
       location: 'Yaoundé',
-      image: '/realisations/photo_10_2025-12-10_00-28-04.jpg',
+      image: '/realisations/images/photo_10_2025-12-10_00-28-04.jpg',
       type: 'image' as const,
+      description: "Image d'une rénovation complète à Yaoundé, montrant le résultat final après transformation du bâtiment.",
     },
     {
       title: 'Travaux en Progression',
       category: 'Gros Œuvre',
       location: 'Douala',
-      video: '/realisations/IMG_7664.MP4',
-      image: '/realisations/photo_11_2025-12-10_00-28-04.jpg',
+      video: '/realisations/videos/IMG_7664.MP4',
+      image: '/realisations/images/photo_11_2025-12-10_00-28-04.jpg',
       type: 'video' as const,
+      description: "Vidéo et photo de travaux en progression à Douala, illustrant l'activité sur le chantier et l'évolution de la structure.",
     },
     {
       title: 'Construction Résidentielle',
       category: 'Construction Neuve',
       location: 'Yaoundé',
-      image: '/realisations/photo_12_2025-12-10_00-28-04.jpg',
+      image: '/realisations/images/photo_12_2025-12-10_00-28-04.jpg',
       type: 'image' as const,
+      description: "Projet de construction résidentielle à Yaoundé, mettant en avant une architecture moderne et fonctionnelle.",
     },
     {
       title: 'Projet Chantier',
       category: 'Gros Œuvre',
       location: 'Limbé',
-      video: '/realisations/IMG_7665.MP4',
-      image: '/realisations/photo_13_2025-12-10_00-28-04.jpg',
+      video: '/realisations/videos/IMG_7665.MP4',
+      image: '/realisations/images/photo_13_2025-12-10_00-28-04.jpg',
       type: 'video' as const,
+      description: "Vidéo et image d'un projet de gros œuvre à Limbé, illustrant la robustesse de la structure et l'organisation du chantier.",
     },
     {
       title: 'Réalisation Architecture',
       category: 'Construction Neuve',
       location: 'Douala',
-      video: '/realisations/IMG_7666.MP4',
-      image: '/realisations/photo_2025-12-03_12-26-14.jpg',
+      video: '/realisations/videos/IMG_7666.MP4',
+      image: '/realisations/images/photo_2025-12-03_12-26-14.jpg',
       type: 'video' as const,
+      description: "Projet architectural à Douala, mettant en avant la créativité et l'innovation dans la conception du bâtiment.",
     },
     {
       title: 'Infrastructure Moderne',
       category: 'Travaux Publics',
       location: 'Yaoundé',
-      video: '/realisations/IMG_7667.MP4',
-      image: '/realisations/photo_2025-12-03_12-26-19.jpg',
+      video: '/realisations/videos/IMG_7667.MP4',
+      image: '/realisations/images/photo_2025-12-03_12-26-19.jpg',
       type: 'video' as const,
+      description: "Vidéo et photo d'une infrastructure moderne à Yaoundé, illustrant l'utilisation de techniques avancées de construction.",
     },
     {
       title: 'Chantier BTP',
       category: 'Gros Œuvre',
       location: 'Garoua',
-      video: '/realisations/IMG_7668.MP4',
-      image: '/realisations/photo_2025-12-03_12-26-23.jpg',
+      video: '/realisations/videos/IMG_7668.MP4',
+      image: '/realisations/images/photo_2025-12-03_12-26-23.jpg',
       type: 'video' as const,
+      description: "Chantier BTP à Garoua, montrant la coordination des équipes et l'avancement des travaux de gros œuvre.",
     },
     {
       title: 'Projet Construction',
       category: 'Construction Neuve',
       location: 'Yaoundé',
-      video: '/realisations/IMG_7669.MP4',
-      image: '/realisations/photo_1_2025-12-10_00-28-04.jpg',
+      video: '/realisations/videos/IMG_7669.MP4',
+      image: '/realisations/images/photo_1_2025-12-10_00-28-04.jpg',
       type: 'video' as const,
+      description: "Vidéo et image d'un projet de construction à Yaoundé, illustrant les différentes étapes du chantier.",
     },
     {
       title: 'Réalisation Finale',
       category: 'Rénovation',
       location: 'Douala',
-      video: '/realisations/IMG_7670.MP4',
-      image: '/realisations/photo_2_2025-12-10_00-28-04.jpg',
+      video: '/realisations/videos/IMG_7670.MP4',
+      image: '/realisations/images/photo_2_2025-12-10_00-28-04.jpg',
       type: 'video' as const,
+      description: "Réalisation finale d'un projet de rénovation à Douala, mettant en avant le résultat obtenu après les travaux.",
     },
   ];
 
@@ -208,64 +266,44 @@ export default function ProjetsPage() {
                 className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 border-transparent hover:border-green-200"
                 style={{animationDelay: `${index * 0.05}s`}}
               >
-                {/* Project Image/Video */}
-                <div 
-                  className="relative h-72 bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden cursor-pointer"
-                  onClick={() => setSelectedMedia({
-                    type: project.type,
-                    src: project.type === 'video' ? project.video! : project.image
-                  })}
-                >
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
-                  
-                  {project.type === 'video' && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-125 group-hover:bg-orange-500 transition-all duration-300 shadow-2xl">
-                        <Play size={32} className="text-green-600 group-hover:text-white ml-1" />
-                      </div>
+                {/* Project Media (Galerie ou unique) */}
+                <div className="relative h-72 bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden cursor-pointer">
+                  {Array.isArray(project.images) && project.images.length > 0 ? (
+                    <div className="w-full h-full flex overflow-x-auto snap-x">
+                      {project.images.map((img, i) => (
+                        <img
+                          key={i}
+                          src={img}
+                          alt={project.title + ' ' + (i+1)}
+                          className="w-full h-full object-cover snap-center transition-transform duration-700"
+                          style={{minWidth: '100%'}}
+                          onClick={() => setSelectedMedia(project)}
+                        />
+                      ))}
                     </div>
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      onClick={() => setSelectedMedia(project)}
+                    />
                   )}
-
-                  <div className="absolute top-4 right-4 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-glow-orange">
-                    {project.category}
-                  </div>
                 </div>
-
-                {/* Project Info */}
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-green-700 transition-colors">
+                {/* Project Title and Button */}
+                <div className="p-6 flex flex-col items-center justify-center">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center group-hover:text-green-700 transition-colors">
                     {project.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-gray-600 mb-4">
-                    <MapPin size={18} className="text-orange-600" />
-                    <span className="font-medium">{project.location}</span>
-                  </div>
-                  <div className="flex items-center justify-between pt-4 border-t-2 border-gray-100">
-                    <span className="text-green-600 font-bold text-sm uppercase tracking-wider flex items-center gap-2">
-                      {project.type === 'video' ? (
-                        <><Video size={18} /> Vidéo</>
-                      ) : (
-                        <><Camera size={18} /> Photo</>
-                      )}
-                    </span>
-                    <button 
-                      onClick={() => setSelectedMedia({
-                        type: project.type,
-                        src: project.type === 'video' ? project.video! : project.image
-                      })}
-                      className="text-green-600 font-bold flex items-center gap-2 hover:gap-4 transition-all"
-                    >
-                      <span>Voir</span>
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => setSelectedMedia(project)}
+                    className="text-green-600 font-bold flex items-center gap-2 hover:gap-4 transition-all border-2 border-green-600 px-6 py-2 rounded-full mt-2"
+                  >
+                    <span>Voir détail</span>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             ))}
@@ -275,8 +313,8 @@ export default function ProjetsPage() {
 
       {/* Lightbox Modal */}
       {selectedMedia && (
-        <div 
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 animate-fadeInUp"
+        <div
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-fadeInUp"
           onClick={() => setSelectedMedia(null)}
         >
           <button
@@ -285,21 +323,24 @@ export default function ProjetsPage() {
           >
             <X size={32} />
           </button>
-          <div className="max-w-6xl max-h-[90vh] w-full" onClick={(e) => e.stopPropagation()}>
-            {selectedMedia.type === 'video' ? (
-              <video
-                src={selectedMedia.src}
-                controls
-                autoPlay
-                className="w-full h-auto rounded-2xl shadow-2xl"
-              />
-            ) : (
-              <img
-                src={selectedMedia.src}
-                alt="Projet"
-                className="w-full h-auto rounded-2xl shadow-2xl"
-              />
-            )}
+          <div className="max-w-3xl w-full bg-white rounded-2xl shadow-2xl p-6 relative" onClick={e => e.stopPropagation()}>
+            <h2 className="text-3xl font-bold mb-2 text-green-800">{selectedMedia.title}</h2>
+            <div className="mb-2 text-gray-600 flex items-center gap-2">
+              <MapPin size={18} className="text-orange-600" />
+              <span>{selectedMedia.location}</span>
+            </div>
+            {/* Galerie d'images ou vidéo */}
+            {Array.isArray(selectedMedia.images) && selectedMedia.images.length > 0 ? (
+              <div className="flex gap-2 overflow-x-auto mb-4">
+                {selectedMedia.images.map((img, i) => (
+                  <img key={i} src={img} alt={selectedMedia.title + ' ' + (i+1)} className="h-56 rounded-lg shadow object-cover" />
+                ))}
+              </div>
+            ) : null}
+            {/* Description */}
+            <div className="mb-4 text-gray-800 whitespace-pre-line text-lg">
+              {selectedMedia.description}
+            </div>
           </div>
         </div>
       )}

@@ -1,0 +1,8 @@
+rez de chausse: 03 balcons , 01 salon , 01salon vip , 01 escalier , 01salle a manger , 01 cuisine , 01magasin , 02 douches , 01 chambres 
+etage : 04 balcons , 01 salon vip , 01 vide sur salon , 01 chambre principale , 01 dressing , 02 chambres , 03 douches 
+
+NB : 
+-surface cumulee et habitable : 286m*2
+-superficie batie au sol : 134 m*2
+-surface du terrain : 200m*2
+-cout estimatif du gros oeuvre : 44 620euros soit 29millions de fcfa

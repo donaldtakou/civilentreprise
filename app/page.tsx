@@ -36,37 +36,37 @@ export default function Home() {
     {
       title: 'Villa Moderne Bastos',
       category: 'Construction Neuve',
-      image: '/realisations/photo_1_2025-12-10_00-28-04.jpg',
+      image: '/realisations/images/photo_1_2025-12-10_00-28-04.jpg',
       location: 'Yaoundé',
     },
     {
       title: 'Immeuble Résidentiel',
       category: 'Gros Œuvre',
-      image: '/realisations/photo_2_2025-12-10_00-28-04.jpg',
+      image: '/realisations/images/photo_2_2025-12-10_00-28-04.jpg',
       location: 'Douala',
     },
     {
       title: 'Complexe Commercial',
       category: 'Construction Neuve',
-      image: '/realisations/photo_3_2025-12-10_00-28-04.jpg',
+      image: '/realisations/images/photo_3_2025-12-10_00-28-04.jpg',
       location: 'Yaoundé',
     },
     {
       title: 'Résidence de Luxe',
       category: 'Gros Œuvre',
-      image: '/realisations/photo_2025-12-03_12-26-14.jpg',
+      image: '/realisations/images/photo_2025-12-03_12-26-14.jpg',
       location: 'Bastos',
     },
     {
       title: 'Centre d\'Affaires',
       category: 'Construction Neuve',
-      image: '/realisations/photo_2025-12-03_12-26-19.jpg',
+      image: '/realisations/images/photo_2025-12-03_12-26-19.jpg',
       location: 'Yaoundé',
     },
     {
       title: 'Projet Terrassement',
       category: 'Terrassement',
-      image: '/realisations/photo_2025-12-03_12-26-23.jpg',
+      image: '/realisations/images/photo_2025-12-03_12-26-23.jpg',
       location: 'Douala',
     },
   ];
@@ -265,7 +265,7 @@ export default function Home() {
               >
                 <div className="h-96 relative overflow-hidden">
                   <img 
-                    src={project.image} 
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />

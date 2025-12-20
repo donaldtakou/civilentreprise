@@ -48,7 +48,7 @@ const servicesData = {
         description: 'Mise hors d\'eau et préparation pour second œuvre',
       },
     ],
-    image: '/realisations/photo_1_2025-12-10_00-28-04.jpg',
+    image: '/realisations/images/photo_1_2025-12-10_00-28-04.jpg',
   },
   'terrassement': {
     title: 'Terrassement',
@@ -93,7 +93,7 @@ const servicesData = {
         description: 'Nivellement et compactage final',
       },
     ],
-    image: '/realisations/photo_2025-12-03_12-26-23.jpg',
+    image: '/realisations/images/photo_2025-12-03_12-26-23.jpg',
   },
   'maconnerie': {
     title: 'Maçonnerie',
@@ -138,7 +138,7 @@ const servicesData = {
         description: 'Application des enduits de finition',
       },
     ],
-    image: '/realisations/photo_3_2025-12-10_00-28-04.jpg',
+    image: '/realisations/images/photo_3_2025-12-10_00-28-04.jpg',
   },
   'renovation': {
     title: 'Rénovation',
@@ -183,12 +183,16 @@ const servicesData = {
         description: 'Revêtements et aménagements finaux',
       },
     ],
-    image: '/realisations/photo_2_2025-12-10_00-28-04.jpg',
+    image: '/realisations/images/photo_2_2025-12-10_00-28-04.jpg',
   },
 };
 
+
+import React from 'react';
+
 export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
-  const service = servicesData[params.slug as keyof typeof servicesData];
+  const { slug } = React.use(params);
+  const service = servicesData[slug as keyof typeof servicesData];
 
   if (!service) {
     notFound();
