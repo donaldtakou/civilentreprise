@@ -190,8 +190,8 @@ const servicesData = {
 
 import React from 'react';
 
-export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = React.use(params);
   const service = servicesData[slug as keyof typeof servicesData];
 
   if (!service) {
